@@ -261,6 +261,57 @@
             margin-top: 0;
             padding-right: 30px;
         }
+        
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .form-container {
+                padding: 15px;
+            }
+            .product-item {
+                grid-template-columns: 1fr;
+                grid-gap: 10px;
+                text-align: center;
+            }
+            .product-image {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto;
+            }
+            .product-info {
+                text-align: center;
+            }
+            .product-size-selector {
+                justify-content: center;
+            }
+            .product-price, .product-quantity {
+                text-align: center;
+                margin-top: 10px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .logo {
+                font-size: 20px;
+            }
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+        }
+        
+        /* Tablet Responsive Styles */
+        @media (min-width: 769px) and (max-width: 991px) {
+            .product-item {
+                grid-template-columns: 80px 1fr 100px 80px;
+            }
+            .product-image {
+                width: 80px;
+                height: 80px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -295,14 +346,14 @@
                         <div class="product-flavor">Vanilla Bean</div>
                         <div class="product-type">Whey Protein</div>
                         <div class="product-size-selector">
-                            <div class="size-option active" data-size="2lb" data-price="44.99">2 lb - $44.99</div>
-                            <div class="size-option" data-size="4lb" data-price="74.99">4 lb - $74.99</div>
+                            <div class="size-option active" data-size="2lb" data-price="40.00">2 lb - $40.00</div>
+                            <div class="size-option" data-size="4lb" data-price="70.00">4 lb - $70.00</div>
                         </div>
                         <div class="nutrition-link" data-nutrition="./Images/vanilla-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
-                    <div class="product-price">$<span class="price-value">44.99</span></div>
+                    <div class="product-price">$<span class="price-value">40.00</span></div>
                     <div class="product-quantity">
-                        <input type="number" name="vanilla-qty" min="0" value="0" class="quantity-input" data-product="Vanilla Bean Whey" data-price="44.99" data-size="2lb">
+                        <input type="number" name="vanilla-qty" min="0" value="0" class="quantity-input" data-product="Vanilla Bean Whey" data-price="40.00" data-size="2lb">
                     </div>
                 </div>
                 
@@ -312,14 +363,14 @@
                         <div class="product-flavor">Chocolate</div>
                         <div class="product-type">Whey Protein</div>
                         <div class="product-size-selector">
-                            <div class="size-option active" data-size="2lb" data-price="44.99">2 lb - $44.99</div>
-                            <div class="size-option" data-size="4lb" data-price="74.99">4 lb - $74.99</div>
+                            <div class="size-option active" data-size="2lb" data-price="40.00">2 lb - $40.00</div>
+                            <div class="size-option" data-size="4lb" data-price="70.00">4 lb - $70.00</div>
                         </div>
                         <div class="nutrition-link" data-nutrition="./Images/chocolate-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
-                    <div class="product-price">$<span class="price-value">44.99</span></div>
+                    <div class="product-price">$<span class="price-value">40.00</span></div>
                     <div class="product-quantity">
-                        <input type="number" name="chocolate-qty" min="0" value="0" class="quantity-input" data-product="Chocolate Whey" data-price="44.99" data-size="2lb">
+                        <input type="number" name="chocolate-qty" min="0" value="0" class="quantity-input" data-product="Chocolate Whey" data-price="40.00" data-size="2lb">
                     </div>
                 </div>
                 
@@ -329,13 +380,13 @@
                         <div class="product-flavor">Strawberry</div>
                         <div class="product-type">Whey Protein</div>
                         <div class="product-size-selector">
-                            <div class="size-option active" data-size="2lb" data-price="44.99">2 lb - $44.99</div>
+                            <div class="size-option active" data-size="2lb" data-price="40.00">2 lb - $40.00</div>
                         </div>
                         <div class="nutrition-link" data-nutrition="./Images/strawberry-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
-                    <div class="product-price">$<span class="price-value">44.99</span></div>
+                    <div class="product-price">$<span class="price-value">40.00</span></div>
                     <div class="product-quantity">
-                        <input type="number" name="strawberry-qty" min="0" value="0" class="quantity-input" data-product="Strawberry Whey" data-price="44.99" data-size="2lb">
+                        <input type="number" name="strawberry-qty" min="0" value="0" class="quantity-input" data-product="Strawberry Whey" data-price="40.00" data-size="2lb">
                     </div>
                 </div>
                 
@@ -345,14 +396,14 @@
                         <div class="product-flavor">Chocolate Peanut Butter</div>
                         <div class="product-type">Whey Protein</div>
                         <div class="product-size-selector">
-                            <div class="size-option active" data-size="2lb" data-price="44.99">2 lb - $44.99</div>
-                            <div class="size-option" data-size="4lb" data-price="74.99">4 lb - $74.99</div>
+                            <div class="size-option active" data-size="2lb" data-price="40.00">2 lb - $40.00</div>
+                            <div class="size-option" data-size="4lb" data-price="70.00">4 lb - $70.00</div>
                         </div>
                         <div class="nutrition-link" data-nutrition="./Images/chopeanutbutter-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
-                    <div class="product-price">$<span class="price-value">44.99</span></div>
+                    <div class="product-price">$<span class="price-value">40.00</span></div>
                     <div class="product-quantity">
-                        <input type="number" name="choc-pb-qty" min="0" value="0" class="quantity-input" data-product="Chocolate Peanut Butter Whey" data-price="44.99" data-size="2lb">
+                        <input type="number" name="choc-pb-qty" min="0" value="0" class="quantity-input" data-product="Chocolate Peanut Butter Whey" data-price="40.00" data-size="2lb">
                     </div>
                 </div>
                 
@@ -362,13 +413,13 @@
                         <div class="product-flavor">Cookies and Cream</div>
                         <div class="product-type">Whey Protein</div>
                         <div class="product-size-selector">
-                            <div class="size-option active" data-size="2lb" data-price="44.99">2 lb - $44.99</div>
+                            <div class="size-option active" data-size="2lb" data-price="44.99">2 lb - $40.00</div>
                         </div>
                         <div class="nutrition-link" data-nutrition="./Images/cookiescream-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
-                    <div class="product-price">$<span class="price-value">44.99</span></div>
+                    <div class="product-price">$<span class="price-value">40.00</span></div>
                     <div class="product-quantity">
-                        <input type="number" name="cookies-qty" min="0" value="0" class="quantity-input" data-product="Cookies and Cream Whey" data-price="44.99" data-size="2lb">
+                        <input type="number" name="cookies-qty" min="0" value="0" class="quantity-input" data-product="Cookies and Cream Whey" data-price="40.00" data-size="2lb">
                     </div>
                 </div>
                 
@@ -378,13 +429,13 @@
                         <div class="product-flavor">Mocha Cold Brew</div>
                         <div class="product-type">Whey Protein</div>
                         <div class="product-size-selector">
-                            <div class="size-option active" data-size="2lb" data-price="44.99">2 lb - $44.99</div>
+                            <div class="size-option active" data-size="2lb" data-price="40.00">2 lb - $40.00</div>
                         </div>
                         <div class="nutrition-link" data-nutrition="./Images/mochacoldbrew-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
-                    <div class="product-price">$<span class="price-value">44.99</span></div>
+                    <div class="product-price">$<span class="price-value">40.00</span></div>
                     <div class="product-quantity">
-                        <input type="number" name="mocha-qty" min="0" value="0" class="quantity-input" data-product="Mocha Cold Brew Whey" data-price="44.99" data-size="2lb">
+                        <input type="number" name="mocha-qty" min="0" value="0" class="quantity-input" data-product="Mocha Cold Brew Whey" data-price="40.00" data-size="2lb">
                     </div>
                 </div>
                 
@@ -394,13 +445,13 @@
                         <div class="product-flavor">Unflavored</div>
                         <div class="product-type">Whey Protein</div>
                         <div class="product-size-selector">
-                            <div class="size-option active" data-size="2lb" data-price="44.99">2 lb - $44.99</div>
+                            <div class="size-option active" data-size="2lb" data-price="44.99">2 lb - $40.00</div>
                         </div>
                         <div class="nutrition-link" data-nutrition="./Images/unflavored-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
-                    <div class="product-price">$<span class="price-value">44.99</span></div>
+                    <div class="product-price">$<span class="price-value">40.00</span></div>
                     <div class="product-quantity">
-                        <input type="number" name="unflavored-qty" min="0" value="0" class="quantity-input" data-product="Unflavored Whey" data-price="44.99" data-size="2lb">
+                        <input type="number" name="unflavored-qty" min="0" value="0" class="quantity-input" data-product="Unflavored Whey" data-price="40.00" data-size="2lb">
                     </div>
                 </div>
                 
@@ -412,9 +463,43 @@
                         <div class="product-size-info">15 servings</div>
                         <div class="nutrition-link" data-nutrition="./Images/Iced-Coffee-Nutrition.jpeg">View Nutrition Facts</div>
                     </div>
-                    <div class="product-price">$<span class="price-value">34.99</span></div>
+                    <div class="product-price">$<span class="price-value">30.00</span></div>
                     <div class="product-quantity">
-                        <input type="number" name="iced-coffee-qty" min="0" value="0" class="quantity-input" data-product="Iced Coffee Whey" data-price="34.99" data-size="15 servings">
+                        <input type="number" name="iced-coffee-qty" min="0" value="0" class="quantity-input" data-product="Iced Coffee Whey" data-price="30.00" data-size="15 servings">
+                    </div>
+                </div>
+
+                <div class="product-category">Casein Protein</div>
+
+                <div class="product-item">
+                    <img src="./Images/vanillabean-casein-main.jpeg" alt="Vanilla Bean Casein Whey" class="product-image" data-product-image="./Images/vanillabean-casein-main.jpeg">
+                    <div class="product-info">
+                        <div class="product-flavor">Vanilla Bean</div>
+                        <div class="product-type">Casein Protein</div>
+                        <div class="product-size-selector">
+                            <div class="size-option active" data-size="2lb" data-price="40.00">2 lb - $40.00</div>
+                        </div>
+                        <div class="nutrition-link" data-nutrition="./Images/vanillabean-casein-nutrition.jpeg">View Nutrition Facts</div>
+                    </div>
+                    <div class="product-price">$<span class="price-value">40.00</span></div>
+                    <div class="product-quantity">
+                        <input type="number" name="vanilla-casein-qty" min="0" value="0" class="quantity-input" data-product="Vanilla Casein Whey" data-price="40.00" data-size="2lb">
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="./Images/chocolate-casein-main.jpeg" alt="Chocolate Casein Whey" class="product-image" data-product-image="./Images/chocolate-casein-main.jpeg">
+                    <div class="product-info">
+                        <div class="product-flavor">Chocolate</div>
+                        <div class="product-type">Casein Protein</div>
+                        <div class="product-size-selector">
+                            <div class="size-option active" data-size="2lb" data-price="40.00">2 lb - $40.00</div>
+                        </div>
+                        <div class="nutrition-link" data-nutrition="./Images/chocolate-casein-nutrition.jpeg">View Nutrition Facts</div>
+                    </div>
+                    <div class="product-price">$<span class="price-value">40.00</span></div>
+                    <div class="product-quantity">
+                        <input type="number" name="chocolate-casein-qty" min="0" value="0" class="quantity-input" data-product="Chocolate Casein Whey" data-price="40.00" data-size="2lb">
                     </div>
                 </div>
                 
@@ -428,9 +513,9 @@
                         <div class="product-size-info">18-20 servings</div>
                         <div class="nutrition-link" data-nutrition="./Images/veganvanilla-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
-                    <div class="product-price">$<span class="price-value">41.99</span></div>
+                    <div class="product-price">$<span class="price-value">37.00</span></div>
                     <div class="product-quantity">
-                        <input type="number" name="vegan-vanilla-qty" min="0" value="0" class="quantity-input" data-product="Vegan Vanilla" data-price="41.99" data-size="18-20 servings">
+                        <input type="number" name="vegan-vanilla-qty" min="0" value="0" class="quantity-input" data-product="Vegan Vanilla" data-price="37.00" data-size="18-20 servings">
                     </div>
                 </div>
 
@@ -442,9 +527,9 @@
                         <div class="product-size-info">18-20 servings</div>
                         <div class="nutrition-link" data-nutrition="./Images/veganchocolate-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
-                    <div class="product-price">$<span class="price-value">41.99</span></div>
+                    <div class="product-price">$<span class="price-value">37.00</span></div>
                     <div class="product-quantity">
-                        <input type="number" name="vegan-chocolate-qty" min="0" value="0" class="quantity-input" data-product="Vegan Chocolate" data-price="41.99" data-size="18-20 servings">
+                        <input type="number" name="vegan-chocolate-qty" min="0" value="0" class="quantity-input" data-product="Vegan Chocolate" data-price="37.00" data-size="18-20 servings">
                     </div>
                 </div>
                 
@@ -458,9 +543,9 @@
                         <div class="product-size-info">40 servings</div>
                         <div class="nutrition-link" data-nutrition="./Images/energycitrus-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
-                    <div class="product-price">$<span class="price-value">29.99</span></div>
+                    <div class="product-price">$<span class="price-value">25.00</span></div>
                     <div class="product-quantity">
-                        <input type="number" name="energy-rasp-qty" min="0" value="0" class="quantity-input" data-product="Clean Hydration + Energy (Raspberry Lemonade)" data-price="29.99" data-size="40 servings">
+                        <input type="number" name="energy-rasp-qty" min="0" value="0" class="quantity-input" data-product="Clean Hydration + Energy (Raspberry Lemonade)" data-price="25.00" data-size="40 servings">
                     </div>
                 </div>
 
@@ -472,9 +557,9 @@
                         <div class="product-size-info">40 servings</div>
                         <div class="nutrition-link" data-nutrition="./Images/energyorangemango-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
-                    <div class="product-price">$<span class="price-value">29.99</span></div>
+                    <div class="product-price">$<span class="price-value">25.00</span></div>
                     <div class="product-quantity">
-                        <input type="number" name="energy-orange-qty" min="0" value="0" class="quantity-input" data-product="Clean Hydration + Energy (Orange Mango)" data-price="29.99" data-size="40 servings">
+                        <input type="number" name="energy-orange-qty" min="0" value="0" class="quantity-input" data-product="Clean Hydration + Energy (Orange Mango)" data-price="25.00" data-size="40 servings">
                     </div>
                 </div>
 
@@ -486,9 +571,9 @@
                         <div class="product-size-info">45 servings</div>
                         <div class="nutrition-link" data-nutrition="./Images/unflavored-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
-                    <div class="product-price">$<span class="price-value">29.99</span></div>
+                    <div class="product-price">$<span class="price-value">25.00</span></div>
                     <div class="product-quantity">
-                        <input type="number" name="creatine-qty" min="0" value="0" class="quantity-input" data-product="Clean Creatine (Unflavored)" data-price="29.99" data-size="45 servings">
+                        <input type="number" name="creatine-qty" min="0" value="0" class="quantity-input" data-product="Clean Creatine (Unflavored)" data-price="25.00" data-size="45 servings">
                     </div>
                 </div>
             </div>
@@ -496,10 +581,7 @@
             <div class="form-section">
                 <h2>Order Summary</h2>
                 <div id="order-summary" class="summary">
-                    <div class="summary-row total-row">
-                        <div>Total:</div>
-                        <div>$<span id="total-price">0.00</span></div>
-                    </div>
+                    <!-- Summary rows will be populated by JavaScript -->
                 </div>
                 
                 <div class="form-group" style="margin-top: 20px;">
@@ -527,26 +609,18 @@
     // Replace with your Google Apps Script Web App URL after deployment
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNxjRVCCgEy7a3q5dYh2D2IkytSWfWrGXubP15kkTiTkM8-3gB5Ho-vAx7n1teu-6U/exec';
 
-// Function to update the order summary
+// Function to update the order summary with tax calculation
 function updateOrderSummary() {
     try {
         console.log("Updating order summary...");
         const quantityInputs = document.querySelectorAll('.quantity-input');
         console.log("Found quantity inputs:", quantityInputs.length);
         const summaryElement = document.getElementById('order-summary');
-        let totalPrice = 0;
+        let subtotal = 0;
         
-        // Clear previous summary (except total row)
-        // First check if we have any children and if totalRow exists
-        if (summaryElement.children.length > 0) {
-            const totalRow = summaryElement.querySelector('.total-row');
-            if (totalRow) {
-                // Remove all children except total row
-                while (summaryElement.firstChild && 
-                       summaryElement.firstChild !== totalRow) {
-                    summaryElement.removeChild(summaryElement.firstChild);
-                }
-            }
+        // Clear previous summary
+        while (summaryElement.firstChild) {
+            summaryElement.removeChild(summaryElement.firstChild);
         }
         
         // Add each selected product to summary
@@ -557,7 +631,7 @@ function updateOrderSummary() {
                 const price = parseFloat(input.getAttribute('data-price')) || 0;
                 const size = input.getAttribute('data-size');
                 const itemTotal = price * quantity;
-                totalPrice += itemTotal;
+                subtotal += itemTotal;
                 
                 console.log(`Adding to summary: ${quantity} x ${productName} (${size}) at $${price} each = $${itemTotal.toFixed(2)}`);
                 
@@ -568,25 +642,48 @@ function updateOrderSummary() {
                     <div>$${itemTotal.toFixed(2)}</div>
                 `;
                 
-                // Insert before total row
-                const totalRow = summaryElement.querySelector('.total-row');
-                if (totalRow) {
-                    summaryElement.insertBefore(summaryRow, totalRow);
-                } else {
-                    // If total row doesn't exist for some reason, just append
-                    summaryElement.appendChild(summaryRow);
-                }
+                // Add to summary
+                summaryElement.appendChild(summaryRow);
             }
         });
         
-        // Update total
-        const totalPriceElement = document.getElementById('total-price');
-        if (totalPriceElement) {
-            totalPriceElement.textContent = totalPrice.toFixed(2);
-            console.log("Total updated to:", totalPrice.toFixed(2));
-        } else {
-            console.error("Could not find total-price element");
+        // Calculate tax (9.75%)
+        const taxRate = 0.0975;
+        const tax = subtotal * taxRate;
+        
+        // Add subtotal row
+        if (subtotal > 0) {
+            const subtotalRow = document.createElement('div');
+            subtotalRow.className = 'summary-row';
+            subtotalRow.innerHTML = `
+                <div>Subtotal:</div>
+                <div>$${subtotal.toFixed(2)}</div>
+            `;
+            summaryElement.appendChild(subtotalRow);
+            
+            // Add tax row
+            const taxRow = document.createElement('div');
+            taxRow.className = 'summary-row';
+            taxRow.innerHTML = `
+                <div>Sales Tax (9.75%):</div>
+                <div>$${tax.toFixed(2)}</div>
+            `;
+            summaryElement.appendChild(taxRow);
         }
+        
+        // Calculate total
+        const total = subtotal + tax;
+        
+        // Add total row
+        const totalRow = document.createElement('div');
+        totalRow.className = 'summary-row total-row';
+        totalRow.innerHTML = `
+            <div>Total:</div>
+            <div>$${total.toFixed(2)}</div>
+        `;
+        summaryElement.appendChild(totalRow);
+        
+        console.log(`Subtotal: $${subtotal.toFixed(2)}, Tax: $${tax.toFixed(2)}, Total: $${total.toFixed(2)}`);
     } catch (error) {
         console.error("Error updating summary:", error);
     }
@@ -617,7 +714,7 @@ document.querySelectorAll('.size-option').forEach(option => {
             const price = this.getAttribute('data-price');
             const priceDisplay = productItem.querySelector('.price-value');
             priceDisplay.textContent = price;
-            console.log(`Updated price display to: $${price}`);
+            console.log(`Updated price display to: ${price}`);
             
             // Update quantity input data attributes
             const quantityInput = productItem.querySelector('.quantity-input');
@@ -700,27 +797,39 @@ document.getElementById('protein-order-form').addEventListener('submit', functio
     };
     
     // Add selected products
+    let subtotal = 0;
     quantities.forEach(input => {
         const quantity = parseInt(input.value);
         if (quantity > 0) {
             const productItem = input.closest('.product-item');
             const size = input.getAttribute('data-size');
             const price = parseFloat(input.getAttribute('data-price')) || 0;
+            const itemTotal = price * quantity;
+            subtotal += itemTotal;
             
             formData.products.push({
                 product: input.getAttribute('data-product'),
                 size: size,
                 quantity: quantity,
-                price: price
+                price: price,
+                itemTotal: itemTotal
             });
             
-            console.log(`Added to order: ${quantity} x ${input.getAttribute('data-product')} (${size}) at $${price}`);
+            console.log(`Added to order: ${quantity} x ${input.getAttribute('data-product')} (${size}) at ${price}`);
         }
     });
     
-    // Calculate total
-    formData.total = formData.products.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    console.log(`Order total: $${formData.total.toFixed(2)}`);
+    // Calculate tax and total
+    const taxRate = 0.0975; // 9.75%
+    const tax = subtotal * taxRate;
+    const total = subtotal + tax;
+    
+    // Add calculated values to form data
+    formData.subtotal = subtotal;
+    formData.tax = tax;
+    formData.total = total;
+    
+    console.log(`Order subtotal: ${subtotal.toFixed(2)}, Tax: ${tax.toFixed(2)}, Total: ${total.toFixed(2)}`);
     
     // Disable submit button and show loading
     const submitButton = document.getElementById('submit-button');
@@ -783,4 +892,6 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("Document loaded, initializing form");
     updateOrderSummary();
 });
+
+
 </script>
