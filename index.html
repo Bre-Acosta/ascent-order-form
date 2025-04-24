@@ -12,10 +12,13 @@
             padding: 20px;
             background-color: #f8f8f8;
             color: #333;
+            line-height: 1.6;
         }
         header {
             text-align: center;
             margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #e63946;
         }
         h1 {
             color: #222;
@@ -24,12 +27,14 @@
             font-weight: bold;
             font-size: 28px;
             margin-bottom: 5px;
+            color: #e63946;
+            letter-spacing: 1px;
         }
         .form-container {
             background-color: white;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         .form-section {
             margin-bottom: 30px;
@@ -42,6 +47,8 @@
         h2 {
             color: #444;
             margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f0f0;
         }
         .form-group {
             margin-bottom: 15px;
@@ -58,6 +65,12 @@
             border-radius: 4px;
             box-sizing: border-box;
             font-size: 16px;
+            transition: border 0.3s ease;
+        }
+        input:focus, select:focus {
+            border-color: #e63946;
+            outline: none;
+            box-shadow: 0 0 5px rgba(230, 57, 70, 0.2);
         }
         .product-item {
             display: grid;
@@ -68,11 +81,15 @@
             margin-bottom: 15px;
             border-radius: 6px;
             background-color: #f9f9f9;
-            transition: background-color 0.2s;
+            transition: all 0.2s;
             position: relative;
+            border: 1px solid transparent;
         }
         .product-item:hover {
             background-color: #f0f0f0;
+            transform: translateY(-2px);
+            border-color: #e6e6e6;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
         }
         .product-image {
             width: 100px;
@@ -81,6 +98,10 @@
             background-color: white;
             border-radius: 4px;
             border: 1px solid #eee;
+            transition: transform 0.2s;
+        }
+        .product-item:hover .product-image {
+            transform: scale(1.05);
         }
         .product-info {
             display: flex;
@@ -111,16 +132,28 @@
             cursor: pointer;
             transition: all 0.2s;
         }
+        .size-option:hover {
+            border-color: #e63946;
+            background-color: #fff9f9;
+        }
         .size-option.active {
             background-color: #e63946;
             color: white;
             border-color: #e63946;
+            font-weight: bold;
         }
         .nutrition-link {
             color: #e63946;
             cursor: pointer;
             text-decoration: underline;
             font-size: 14px;
+            margin-top: 6px;
+            display: inline-block;
+            transition: color 0.2s;
+        }
+        .nutrition-link:hover {
+            color: #d62a38;
+            text-decoration: none;
         }
         .product-price {
             color: #e63946;
@@ -134,27 +167,45 @@
         input[type="number"] {
             width: 70px;
             text-align: center;
+            border-radius: 20px;
+            border: 2px solid #ddd;
+            transition: border 0.3s;
+        }
+        input[type="number"]:focus {
+            border-color: #e63946;
         }
         button {
             background-color: #e63946;
             color: white;
-            padding: 12px 20px;
+            padding: 14px 25px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
             font-weight: bold;
             width: 100%;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
         button:hover {
             background-color: #d62a38;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(230, 57, 70, 0.3);
+        }
+        button:active {
+            transform: translateY(0);
         }
         #response-container {
             margin-top: 20px;
             padding: 15px;
             border-radius: 4px;
             display: none;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .success {
             background-color: #d4edda;
@@ -183,9 +234,10 @@
         }
         .summary {
             margin-top: 20px;
-            padding: 15px;
+            padding: 20px;
             background-color: #f9f9f9;
             border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
         .summary-row {
             display: flex;
@@ -205,6 +257,7 @@
             margin-top: 10px;
             padding-top: 10px;
             border-top: 2px solid #ddd;
+            color: #e63946;
         }
         .required-field::after {
             content: " *";
@@ -212,10 +265,11 @@
         }
         .product-category {
             font-weight: bold;
-            margin: 20px 0 10px 0;
+            margin: 30px 0 15px 0;
             padding-bottom: 5px;
             border-bottom: 2px solid #eee;
-            font-size: 18px;
+            font-size: 20px;
+            color: #e63946;
         }
         .product-size-info {
             font-size: 12px;
@@ -233,15 +287,22 @@
             height: 100%;
             background-color: rgba(0,0,0,0.7);
             overflow: auto;
+            animation: fadeIn 0.3s;
         }
         .modal-content {
             background-color: white;
             margin: 5% auto;
-            padding: 20px;
+            padding: 25px;
             border-radius: 8px;
             width: 80%;
             max-width: 800px;
             position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         .close-modal {
             position: absolute;
@@ -251,15 +312,23 @@
             font-weight: bold;
             cursor: pointer;
             color: #666;
+            transition: color 0.2s;
+        }
+        .close-modal:hover {
+            color: #e63946;
         }
         .nutrition-image {
             width: 100%;
             max-height: 80vh;
             object-fit: contain;
+            border-radius: 4px;
         }
         .modal-title {
             margin-top: 0;
             padding-right: 30px;
+            color: #e63946;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
         }
         
         /* Mobile Responsive Styles */
@@ -583,11 +652,6 @@
                 <div id="order-summary" class="summary">
                     <!-- Summary rows will be populated by JavaScript -->
                 </div>
-                
-                <div class="form-group" style="margin-top: 20px;">
-                    <label for="notes">Special Instructions (Optional)</label>
-                    <textarea id="notes" name="notes" rows="3" style="width: 100%; padding: 10px;"></textarea>
-                </div>
             </div>
             
             <button type="submit" id="submit-button">Place Order</button>
@@ -633,13 +697,13 @@ function updateOrderSummary() {
                 const itemTotal = price * quantity;
                 subtotal += itemTotal;
                 
-                console.log(`Adding to summary: ${quantity} x ${productName} (${size}) at $${price} each = $${itemTotal.toFixed(2)}`);
+                console.log(`Adding to summary: ${quantity} x ${productName} (${size}) at ${price} each = ${itemTotal.toFixed(2)}`);
                 
                 const summaryRow = document.createElement('div');
                 summaryRow.className = 'summary-row';
                 summaryRow.innerHTML = `
                     <div>${quantity} × ${productName} (${size})</div>
-                    <div>$${itemTotal.toFixed(2)}</div>
+                    <div>${itemTotal.toFixed(2)}</div>
                 `;
                 
                 // Add to summary
@@ -657,7 +721,7 @@ function updateOrderSummary() {
             subtotalRow.className = 'summary-row';
             subtotalRow.innerHTML = `
                 <div>Subtotal:</div>
-                <div>$${subtotal.toFixed(2)}</div>
+                <div>${subtotal.toFixed(2)}</div>
             `;
             summaryElement.appendChild(subtotalRow);
             
@@ -666,7 +730,7 @@ function updateOrderSummary() {
             taxRow.className = 'summary-row';
             taxRow.innerHTML = `
                 <div>Sales Tax (9.75%):</div>
-                <div>$${tax.toFixed(2)}</div>
+                <div>${tax.toFixed(2)}</div>
             `;
             summaryElement.appendChild(taxRow);
         }
@@ -679,11 +743,11 @@ function updateOrderSummary() {
         totalRow.className = 'summary-row total-row';
         totalRow.innerHTML = `
             <div>Total:</div>
-            <div>$${total.toFixed(2)}</div>
+            <div>${total.toFixed(2)}</div>
         `;
         summaryElement.appendChild(totalRow);
         
-        console.log(`Subtotal: $${subtotal.toFixed(2)}, Tax: $${tax.toFixed(2)}, Total: $${total.toFixed(2)}`);
+        console.log(`Subtotal: ${subtotal.toFixed(2)}, Tax: ${tax.toFixed(2)}, Total: ${total.toFixed(2)}`);
     } catch (error) {
         console.error("Error updating summary:", error);
     }
@@ -792,7 +856,7 @@ document.getElementById('protein-order-form').addEventListener('submit', functio
     const formData = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value || 'Not provided',
-        notes: document.getElementById('notes').value || 'None',
+        notes: '',  // Removed special instructions but keeping the field in the data structure
         products: []
     };
     
@@ -892,6 +956,4 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("Document loaded, initializing form");
     updateOrderSummary();
 });
-
-
-</script>
+    </script>
