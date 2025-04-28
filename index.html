@@ -818,7 +818,7 @@
                 cartItemElement.innerHTML = `
                     <div>${item.quantity} × ${item.product} ${item.type} (${item.size})</div>
                     <div>
-                        $${itemTotal.toFixed(2)}
+                        ${itemTotal.toFixed(2)}
                         <button type="button" class="remove-item" data-id="${item.id}">×</button>
                     </div>
                 `;
@@ -835,15 +835,15 @@
             summaryTotalsElement.innerHTML = `
                 <div class="summary-row">
                     <div>Subtotal:</div>
-                    <div>$${subtotal.toFixed(2)}</div>
+                    <div>${subtotal.toFixed(2)}</div>
                 </div>
                 <div class="summary-row">
                     <div>Sales Tax (9.75%):</div>
-                    <div>$${tax.toFixed(2)}</div>
+                    <div>${tax.toFixed(2)}</div>
                 </div>
                 <div class="summary-row total-row">
                     <div>Total:</div>
-                    <div>$${total.toFixed(2)}</div>
+                    <div>${total.toFixed(2)}</div>
                 </div>
             `;
             
@@ -855,25 +855,16 @@
                 });
             });
             
-            console.log(`Cart updated: ${cart.length} items, Subtotal: $${subtotal.toFixed(2)}, Tax: $${tax.toFixed(2)}, Total: $${total.toFixed(2)}`);
+            console.log(`Cart updated: ${cart.length} items, Subtotal: ${subtotal.toFixed(2)}, Tax: ${tax.toFixed(2)}, Total: ${total.toFixed(2)}`);
         } catch (error) {
             console.error("Error updating summary:", error);
         }
     }
 
-    // Function to add item to cart
+    // Function to add item to cart - MODIFIED to remove popup message
     function addToCart(product, type, size, price, quantity) {
         // Don't add if quantity is 0
         if (quantity <= 0) {
-            const responseContainer = document.getElementById('response-container');
-            responseContainer.innerHTML = `Please select a quantity greater than 0.`;
-            responseContainer.className = 'error';
-            responseContainer.style.display = 'block';
-            
-            // Hide feedback after 3 seconds
-            setTimeout(() => {
-                responseContainer.style.display = 'none';
-            }, 3000);
             return;
         }
         
@@ -891,7 +882,6 @@
         
         // Reset quantity input to 0
         // Find the product container and reset quantity
-        // We need a more reliable way to find the right product since :contains is not standard CSS
         const productItems = document.querySelectorAll('.product-item');
         for (const item of productItems) {
             const flavorElement = item.querySelector('.product-flavor');
@@ -911,16 +901,7 @@
         
         updateOrderSummary();
         
-        // Show feedback
-        const responseContainer = document.getElementById('response-container');
-        responseContainer.innerHTML = `${quantity} × ${product} ${type} (${size}) added to your order!`;
-        responseContainer.className = 'success';
-        responseContainer.style.display = 'block';
-        
-        // Hide feedback after 3 seconds
-        setTimeout(() => {
-            responseContainer.style.display = 'none';
-        }, 3000);
+        // Removed popup feedback message
     }
 
     // Function to remove item from cart
@@ -942,10 +923,30 @@
                 const productItem = this.closest('.product-item');
                 const product = this.getAttribute('data-product');
                 const type = this.getAttribute('data-type');
+                
+                // Handle products with size options
+                let size, price;
                 const activeSize = productItem.querySelector('.size-option.active');
-                const size = activeSize.getAttribute('data-size');
-                const price = parseFloat(activeSize.getAttribute('data-price'));
-                const quantity = parseInt(productItem.querySelector('.quantity-input').value) || 1;
+                
+                if (activeSize) {
+                    // Products with size options
+                    size = activeSize.getAttribute('data-size');
+                    price = parseFloat(activeSize.getAttribute('data-price'));
+                } else {
+                    // Products with fixed size (like those with servings)
+                    const priceElement = productItem.querySelector('.price-value');
+                    price = parseFloat(priceElement.textContent);
+                    
+                    // Try to get size from product-size-info
+                    const sizeInfoElement = productItem.querySelector('.product-size-info');
+                    if (sizeInfoElement) {
+                        size = sizeInfoElement.textContent.trim();
+                    } else {
+                        size = "Standard";
+                    }
+                }
+                
+                const quantity = parseInt(productItem.querySelector('.quantity-input').value) || 0;
                 
                 // Add to cart
                 addToCart(product, type, size, price, quantity);
@@ -1021,20 +1022,46 @@
         e.preventDefault();
         console.log("Form submission started");
         
+        // Validate the form
+        const nameField = document.getElementById('name');
+        const emailField = document.getElementById('email');
+        
+        // Check name field
+        if (!nameField.value.trim()) {
+            // Keep critical error for name field
+            const responseContainer = document.getElementById('response-container');
+            responseContainer.innerHTML = 'Please enter your name.';
+            responseContainer.className = 'error';
+            responseContainer.style.display = 'block';
+            nameField.focus();
+            return;
+        }
+        
+        // Check email format if provided
+        if (emailField.value && !isValidEmail(emailField.value)) {
+            // Keep critical error for email format
+            const responseContainer = document.getElementById('response-container');
+            responseContainer.innerHTML = 'Please enter a valid email address or leave it blank.';
+            responseContainer.className = 'error';
+            responseContainer.style.display = 'block';
+            emailField.focus();
+            return;
+        }
+        
         // Check if at least one product is selected
         if (cart.length === 0) {
+            // Keep critical error for empty cart
             const responseContainer = document.getElementById('response-container');
             responseContainer.innerHTML = 'Please add at least one product to your order.';
             responseContainer.className = 'error';
             responseContainer.style.display = 'block';
-            console.log("Form submission failed: No products selected");
             return;
         }
         
         // Collect form data
         const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value || 'Not provided',
+            name: nameField.value.trim(),
+            email: emailField.value.trim() || 'Not provided',
             notes: '',
             products: []
         };
@@ -1068,7 +1095,7 @@
         
         console.log(`Order subtotal: ${subtotal.toFixed(2)}, Tax: ${tax.toFixed(2)}, Total: ${total.toFixed(2)}`);
         
-        // Disable submit button and show loading
+        // Show loading state
         const submitButton = document.getElementById('submit-button');
         const originalButtonText = submitButton.innerHTML;
         submitButton.disabled = true;
@@ -1124,6 +1151,12 @@
             submitButton.innerHTML = originalButtonText;
         });
     });
+
+    // Email validation function
+    function isValidEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return email === '' || regex.test(email);
+    }
 
     // Initialize the form
     document.addEventListener('DOMContentLoaded', function() {
