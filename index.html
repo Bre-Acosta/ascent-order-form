@@ -74,7 +74,7 @@
         }
         .product-item {
             display: grid;
-            grid-template-columns: 100px 1fr 120px 120px;
+            grid-template-columns: 100px 1fr 120px 150px;
             grid-gap: 15px;
             align-items: center;
             padding: 15px;
@@ -161,20 +161,49 @@
             font-size: 18px;
             text-align: center;
         }
-        .product-quantity {
-            text-align: center;
+        .product-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
         }
         input[type="number"] {
-            width: 70px;
+            width: 60px;
             text-align: center;
             border-radius: 20px;
             border: 2px solid #ddd;
             transition: border 0.3s;
+            margin: 0 8px;
         }
         input[type="number"]:focus {
             border-color: #e63946;
         }
-        button {
+        .add-button {
+            background-color: #e63946;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .add-button:hover {
+            background-color: #d62a38;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(230, 57, 70, 0.3);
+        }
+        .add-button:active {
+            transform: translateY(0);
+        }
+        .submit-button {
             background-color: #e63946;
             color: white;
             padding: 14px 25px;
@@ -188,12 +217,12 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
-        button:hover {
+        .submit-button:hover {
             background-color: #d62a38;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(230, 57, 70, 0.3);
         }
-        button:active {
+        .submit-button:active {
             transform: translateY(0);
         }
         #response-container {
@@ -276,6 +305,24 @@
             color: #666;
             margin-top: 4px;
         }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .remove-item {
+            background: none;
+            border: none;
+            color: #e63946;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.2s;
+            padding: 0 5px;
+        }
+        .remove-item:hover {
+            color: #d62a38;
+            transform: scale(1.2);
+        }
         /* Modal styles */
         .modal {
             display: none;
@@ -355,7 +402,7 @@
             .product-size-selector {
                 justify-content: center;
             }
-            .product-price, .product-quantity {
+            .product-price, .product-actions {
                 text-align: center;
                 margin-top: 10px;
             }
@@ -374,7 +421,7 @@
         /* Tablet Responsive Styles */
         @media (min-width: 769px) and (max-width: 991px) {
             .product-item {
-                grid-template-columns: 80px 1fr 100px 80px;
+                grid-template-columns: 80px 1fr 100px 120px;
             }
             .product-image {
                 width: 80px;
@@ -421,8 +468,12 @@
                         <div class="nutrition-link" data-nutrition="./Images/vanilla-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">40.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="vanilla-qty" min="0" value="0" class="quantity-input" data-product="Vanilla Bean Whey" data-price="40.00" data-size="2lb">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="vanilla-qty">Qty:</label>
+                            <input type="number" id="vanilla-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Vanilla Bean" data-type="Whey Protein">Add to Order</button>
                     </div>
                 </div>
                 
@@ -438,8 +489,12 @@
                         <div class="nutrition-link" data-nutrition="./Images/chocolate-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">40.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="chocolate-qty" min="0" value="0" class="quantity-input" data-product="Chocolate Whey" data-price="40.00" data-size="2lb">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="chocolate-qty">Qty:</label>
+                            <input type="number" id="chocolate-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Chocolate" data-type="Whey Protein">Add to Order</button>
                     </div>
                 </div>
                 
@@ -454,8 +509,12 @@
                         <div class="nutrition-link" data-nutrition="./Images/strawberry-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">40.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="strawberry-qty" min="0" value="0" class="quantity-input" data-product="Strawberry Whey" data-price="40.00" data-size="2lb">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="strawberry-qty">Qty:</label>
+                            <input type="number" id="strawberry-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Strawberry" data-type="Whey Protein">Add to Order</button>
                     </div>
                 </div>
                 
@@ -471,8 +530,12 @@
                         <div class="nutrition-link" data-nutrition="./Images/chopeanutbutter-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">40.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="choc-pb-qty" min="0" value="0" class="quantity-input" data-product="Chocolate Peanut Butter Whey" data-price="40.00" data-size="2lb">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="choc-pb-qty">Qty:</label>
+                            <input type="number" id="choc-pb-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Chocolate Peanut Butter" data-type="Whey Protein">Add to Order</button>
                     </div>
                 </div>
                 
@@ -482,13 +545,17 @@
                         <div class="product-flavor">Cookies and Cream</div>
                         <div class="product-type">Whey Protein</div>
                         <div class="product-size-selector">
-                            <div class="size-option active" data-size="2lb" data-price="44.99">2 lb - $40.00</div>
+                            <div class="size-option active" data-size="2lb" data-price="40.00">2 lb - $40.00</div>
                         </div>
                         <div class="nutrition-link" data-nutrition="./Images/cookiescream-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">40.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="cookies-qty" min="0" value="0" class="quantity-input" data-product="Cookies and Cream Whey" data-price="40.00" data-size="2lb">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="cookies-qty">Qty:</label>
+                            <input type="number" id="cookies-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Cookies and Cream" data-type="Whey Protein">Add to Order</button>
                     </div>
                 </div>
                 
@@ -503,8 +570,12 @@
                         <div class="nutrition-link" data-nutrition="./Images/mochacoldbrew-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">40.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="mocha-qty" min="0" value="0" class="quantity-input" data-product="Mocha Cold Brew Whey" data-price="40.00" data-size="2lb">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="mocha-qty">Qty:</label>
+                            <input type="number" id="mocha-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Mocha Cold Brew" data-type="Whey Protein">Add to Order</button>
                     </div>
                 </div>
                 
@@ -514,13 +585,17 @@
                         <div class="product-flavor">Unflavored</div>
                         <div class="product-type">Whey Protein</div>
                         <div class="product-size-selector">
-                            <div class="size-option active" data-size="2lb" data-price="44.99">2 lb - $40.00</div>
+                            <div class="size-option active" data-size="2lb" data-price="40.00">2 lb - $40.00</div>
                         </div>
                         <div class="nutrition-link" data-nutrition="./Images/unflavored-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">40.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="unflavored-qty" min="0" value="0" class="quantity-input" data-product="Unflavored Whey" data-price="40.00" data-size="2lb">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="unflavored-qty">Qty:</label>
+                            <input type="number" id="unflavored-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Unflavored" data-type="Whey Protein">Add to Order</button>
                     </div>
                 </div>
                 
@@ -533,8 +608,12 @@
                         <div class="nutrition-link" data-nutrition="./Images/Iced-Coffee-Nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">30.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="iced-coffee-qty" min="0" value="0" class="quantity-input" data-product="Iced Coffee Whey" data-price="30.00" data-size="15 servings">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="iced-coffee-qty">Qty:</label>
+                            <input type="number" id="iced-coffee-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Iced Coffee" data-type="Whey Protein">Add to Order</button>
                     </div>
                 </div>
 
@@ -551,8 +630,12 @@
                         <div class="nutrition-link" data-nutrition="./Images/vanillabean-casein-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">40.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="vanilla-casein-qty" min="0" value="0" class="quantity-input" data-product="Vanilla Casein Whey" data-price="40.00" data-size="2lb">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="vanilla-casein-qty">Qty:</label>
+                            <input type="number" id="vanilla-casein-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Vanilla Bean" data-type="Casein Protein">Add to Order</button>
                     </div>
                 </div>
 
@@ -567,8 +650,12 @@
                         <div class="nutrition-link" data-nutrition="./Images/chocolate-casein-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">40.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="chocolate-casein-qty" min="0" value="0" class="quantity-input" data-product="Chocolate Casein Whey" data-price="40.00" data-size="2lb">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="chocolate-casein-qty">Qty:</label>
+                            <input type="number" id="chocolate-casein-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Chocolate" data-type="Casein Protein">Add to Order</button>
                     </div>
                 </div>
                 
@@ -583,8 +670,12 @@
                         <div class="nutrition-link" data-nutrition="./Images/veganvanilla-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">37.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="vegan-vanilla-qty" min="0" value="0" class="quantity-input" data-product="Vegan Vanilla" data-price="37.00" data-size="18-20 servings">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="vegan-vanilla-qty">Qty:</label>
+                            <input type="number" id="vegan-vanilla-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Vegan Vanilla" data-type="Plant-Based Protein">Add to Order</button>
                     </div>
                 </div>
 
@@ -597,8 +688,12 @@
                         <div class="nutrition-link" data-nutrition="./Images/veganchocolate-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">37.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="vegan-chocolate-qty" min="0" value="0" class="quantity-input" data-product="Vegan Chocolate" data-price="37.00" data-size="18-20 servings">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="vegan-chocolate-qty">Qty:</label>
+                            <input type="number" id="vegan-chocolate-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Vegan Chocolate" data-type="Plant-Based Protein">Add to Order</button>
                     </div>
                 </div>
                 
@@ -613,8 +708,12 @@
                         <div class="nutrition-link" data-nutrition="./Images/energycitrus-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">25.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="energy-rasp-qty" min="0" value="0" class="quantity-input" data-product="Clean Hydration + Energy (Raspberry Lemonade)" data-price="25.00" data-size="40 servings">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="energy-rasp-qty">Qty:</label>
+                            <input type="number" id="energy-rasp-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Raspberry Lemonade" data-type="Clean Hydration + Energy">Add to Order</button>
                     </div>
                 </div>
 
@@ -627,8 +726,12 @@
                         <div class="nutrition-link" data-nutrition="./Images/energyorangemango-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">25.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="energy-orange-qty" min="0" value="0" class="quantity-input" data-product="Clean Hydration + Energy (Orange Mango)" data-price="25.00" data-size="40 servings">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="energy-orange-qty">Qty:</label>
+                            <input type="number" id="energy-orange-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Orange Mango" data-type="Clean Hydration + Energy">Add to Order</button>
                     </div>
                 </div>
 
@@ -641,8 +744,12 @@
                         <div class="nutrition-link" data-nutrition="./Images/unflavored-nutrition.jpeg">View Nutrition Facts</div>
                     </div>
                     <div class="product-price">$<span class="price-value">25.00</span></div>
-                    <div class="product-quantity">
-                        <input type="number" name="creatine-qty" min="0" value="0" class="quantity-input" data-product="Clean Creatine (Unflavored)" data-price="25.00" data-size="45 servings">
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="creatine-qty">Qty:</label>
+                            <input type="number" id="creatine-qty" min="0" value="0" class="quantity-input">
+                        </div>
+                        <button type="button" class="add-button" data-product="Unflavored" data-type="Clean Creatine">Add to Order</button>
                     </div>
                 </div>
             </div>
@@ -650,11 +757,16 @@
             <div class="form-section">
                 <h2>Order Summary</h2>
                 <div id="order-summary" class="summary">
-                    <!-- Summary rows will be populated by JavaScript -->
+                    <div id="cart-items">
+                        <!-- Cart items will be populated by JavaScript -->
+                    </div>
+                    <div id="summary-totals">
+                        <!-- Summary totals will be populated by JavaScript -->
+                    </div>
                 </div>
             </div>
             
-            <button type="submit" id="submit-button">Place Order</button>
+            <button type="submit" id="submit-button" class="submit-button">Place Order</button>
         </form>
     </div>
     
@@ -671,289 +783,353 @@
     
     <script>
     // Replace with your Google Apps Script Web App URL after deployment
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNxjRVCCgEy7a3q5dYh2D2IkytSWfWrGXubP15kkTiTkM8-3gB5Ho-vAx7n1teu-6U/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNxjRVCCgEy7a3q5dYh2D2IkytSWfWrGXubP15kkTiTkM8-3gB5Ho-vAx7n1teu-6U/exec';
 
-// Function to update the order summary with tax calculation
-function updateOrderSummary() {
-    try {
-        console.log("Updating order summary...");
-        const quantityInputs = document.querySelectorAll('.quantity-input');
-        console.log("Found quantity inputs:", quantityInputs.length);
-        const summaryElement = document.getElementById('order-summary');
-        let subtotal = 0;
-        
-        // Clear previous summary
-        while (summaryElement.firstChild) {
-            summaryElement.removeChild(summaryElement.firstChild);
-        }
-        
-        // Add each selected product to summary
-        quantityInputs.forEach(input => {
-            const quantity = parseInt(input.value) || 0;
-            if (quantity > 0) {
-                const productName = input.getAttribute('data-product');
-                const price = parseFloat(input.getAttribute('data-price')) || 0;
-                const size = input.getAttribute('data-size');
-                const itemTotal = price * quantity;
+    // Initialize cart as an array
+    let cart = [];
+    let cartItemId = 0; // To give each cart item a unique ID for removal
+
+    // Function to update the order summary
+    function updateOrderSummary() {
+        try {
+            console.log("Updating order summary...");
+            const cartItemsElement = document.getElementById('cart-items');
+            const summaryTotalsElement = document.getElementById('summary-totals');
+            
+            // Clear previous summary
+            cartItemsElement.innerHTML = '';
+            summaryTotalsElement.innerHTML = '';
+            
+            let subtotal = 0;
+            
+            // If cart is empty, show message
+            if (cart.length === 0) {
+                cartItemsElement.innerHTML = '<div class="summary-row">Your cart is empty</div>';
+                return;
+            }
+            
+            // Add each cart item to summary
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
                 subtotal += itemTotal;
                 
-                console.log(`Adding to summary: ${quantity} x ${productName} (${size}) at ${price} each = ${itemTotal.toFixed(2)}`);
-                
-                const summaryRow = document.createElement('div');
-                summaryRow.className = 'summary-row';
-                summaryRow.innerHTML = `
-                    <div>${quantity} × ${productName} (${size})</div>
-                    <div>${itemTotal.toFixed(2)}</div>
+                const cartItemElement = document.createElement('div');
+                cartItemElement.className = 'summary-row cart-item';
+                cartItemElement.innerHTML = `
+                    <div>${item.quantity} × ${item.product} ${item.type} (${item.size})</div>
+                    <div>
+                        $${itemTotal.toFixed(2)}
+                        <button type="button" class="remove-item" data-id="${item.id}">×</button>
+                    </div>
                 `;
                 
-                // Add to summary
-                summaryElement.appendChild(summaryRow);
+                cartItemsElement.appendChild(cartItemElement);
+            });
+            
+            // Calculate tax (9.75%)
+            const taxRate = 0.0975;
+            const tax = subtotal * taxRate;
+            const total = subtotal + tax;
+            
+            // Add subtotal, tax, and total rows
+            summaryTotalsElement.innerHTML = `
+                <div class="summary-row">
+                    <div>Subtotal:</div>
+                    <div>$${subtotal.toFixed(2)}</div>
+                </div>
+                <div class="summary-row">
+                    <div>Sales Tax (9.75%):</div>
+                    <div>$${tax.toFixed(2)}</div>
+                </div>
+                <div class="summary-row total-row">
+                    <div>Total:</div>
+                    <div>$${total.toFixed(2)}</div>
+                </div>
+            `;
+            
+            // Add event listeners to remove buttons
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    removeCartItem(itemId);
+                });
+            });
+            
+            console.log(`Cart updated: ${cart.length} items, Subtotal: $${subtotal.toFixed(2)}, Tax: $${tax.toFixed(2)}, Total: $${total.toFixed(2)}`);
+        } catch (error) {
+            console.error("Error updating summary:", error);
+        }
+    }
+
+    // Function to add item to cart
+    function addToCart(product, type, size, price, quantity) {
+        // Don't add if quantity is 0
+        if (quantity <= 0) {
+            const responseContainer = document.getElementById('response-container');
+            responseContainer.innerHTML = `Please select a quantity greater than 0.`;
+            responseContainer.className = 'error';
+            responseContainer.style.display = 'block';
+            
+            // Hide feedback after 3 seconds
+            setTimeout(() => {
+                responseContainer.style.display = 'none';
+            }, 3000);
+            return;
+        }
+        
+        const newItem = {
+            id: cartItemId++,
+            product,
+            type,
+            size,
+            price,
+            quantity
+        };
+        
+        cart.push(newItem);
+        console.log(`Added to cart: ${quantity} × ${product} ${type} (${size}) at ${price} each`);
+        
+        // Reset quantity input to 0
+        // Find the product container and reset quantity
+        // We need a more reliable way to find the right product since :contains is not standard CSS
+        const productItems = document.querySelectorAll('.product-item');
+        for (const item of productItems) {
+            const flavorElement = item.querySelector('.product-flavor');
+            const typeElement = item.querySelector('.product-type');
+            
+            if (flavorElement && typeElement && 
+                flavorElement.textContent === product && 
+                typeElement.textContent === type) {
+                
+                const quantityInput = item.querySelector('.quantity-input');
+                if (quantityInput) {
+                    quantityInput.value = 0;
+                }
+                break;
             }
-        });
-        
-        // Calculate tax (9.75%)
-        const taxRate = 0.0975;
-        const tax = subtotal * taxRate;
-        
-        // Add subtotal row
-        if (subtotal > 0) {
-            const subtotalRow = document.createElement('div');
-            subtotalRow.className = 'summary-row';
-            subtotalRow.innerHTML = `
-                <div>Subtotal:</div>
-                <div>${subtotal.toFixed(2)}</div>
-            `;
-            summaryElement.appendChild(subtotalRow);
-            
-            // Add tax row
-            const taxRow = document.createElement('div');
-            taxRow.className = 'summary-row';
-            taxRow.innerHTML = `
-                <div>Sales Tax (9.75%):</div>
-                <div>${tax.toFixed(2)}</div>
-            `;
-            summaryElement.appendChild(taxRow);
         }
         
-        // Calculate total
-        const total = subtotal + tax;
+        updateOrderSummary();
         
-        // Add total row
-        const totalRow = document.createElement('div');
-        totalRow.className = 'summary-row total-row';
-        totalRow.innerHTML = `
-            <div>Total:</div>
-            <div>${total.toFixed(2)}</div>
-        `;
-        summaryElement.appendChild(totalRow);
-        
-        console.log(`Subtotal: ${subtotal.toFixed(2)}, Tax: ${tax.toFixed(2)}, Total: ${total.toFixed(2)}`);
-    } catch (error) {
-        console.error("Error updating summary:", error);
-    }
-}
-
-// Add event listeners to quantity inputs
-document.querySelectorAll('.quantity-input').forEach(input => {
-    input.addEventListener('change', updateOrderSummary);
-});
-
-// Size selector functionality
-document.querySelectorAll('.size-option').forEach(option => {
-    option.addEventListener('click', function() {
-        try {
-            console.log("Size option clicked:", this.textContent);
-            // Get parent product item
-            const productItem = this.closest('.product-item');
-            
-            // Remove active class from all size options in this product
-            productItem.querySelectorAll('.size-option').forEach(opt => {
-                opt.classList.remove('active');
-            });
-            
-            // Add active class to clicked option
-            this.classList.add('active');
-            
-            // Update price display
-            const price = this.getAttribute('data-price');
-            const priceDisplay = productItem.querySelector('.price-value');
-            priceDisplay.textContent = price;
-            console.log(`Updated price display to: ${price}`);
-            
-            // Update quantity input data attributes
-            const quantityInput = productItem.querySelector('.quantity-input');
-            quantityInput.setAttribute('data-price', price);
-            quantityInput.setAttribute('data-size', this.getAttribute('data-size'));
-            console.log(`Updated input data: price=${price}, size=${this.getAttribute('data-size')}`);
-            
-            // Update order summary
-            updateOrderSummary();
-        } catch (error) {
-            console.error("Error in size option click handler:", error);
-        }
-    });
-});
-
-// Modal functionality
-const modal = document.getElementById('nutrition-modal');
-const modalImage = document.getElementById('nutrition-image');
-const modalTitle = document.getElementById('modal-title');
-const closeModal = document.querySelector('.close-modal');
-
-// Open modal when clicking on "View Nutrition Facts"
-document.querySelectorAll('.nutrition-link').forEach(link => {
-    link.addEventListener('click', function() {
-        try {
-            const nutritionImage = this.getAttribute('data-nutrition');
-            const productFlavor = this.parentElement.querySelector('.product-flavor').textContent;
-            console.log(`Opening nutrition modal for ${productFlavor}`);
-            modalImage.src = nutritionImage;
-            modalTitle.textContent = `${productFlavor} - Nutrition Facts`;
-            modal.style.display = 'block';
-        } catch (error) {
-            console.error("Error opening nutrition modal:", error);
-        }
-    });
-});
-
-// Close modal when clicking on X
-closeModal.addEventListener('click', function() {
-    modal.style.display = 'none';
-});
-
-// Close modal when clicking outside the content
-window.addEventListener('click', function(event) {
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-});
-
-// Form submission handler
-document.getElementById('protein-order-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    console.log("Form submission started");
-    
-    // Check if at least one product is selected
-    const quantities = document.querySelectorAll('.quantity-input');
-    let hasProducts = false;
-    
-    quantities.forEach(input => {
-        if (parseInt(input.value) > 0) {
-            hasProducts = true;
-        }
-    });
-    
-    if (!hasProducts) {
+        // Show feedback
         const responseContainer = document.getElementById('response-container');
-        responseContainer.innerHTML = 'Please select at least one product to order.';
-        responseContainer.className = 'error';
-        responseContainer.style.display = 'block';
-        console.log("Form submission failed: No products selected");
-        return;
-    }
-    
-    // Collect form data
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value || 'Not provided',
-        notes: '',  // Removed special instructions but keeping the field in the data structure
-        products: []
-    };
-    
-    // Add selected products
-    let subtotal = 0;
-    quantities.forEach(input => {
-        const quantity = parseInt(input.value);
-        if (quantity > 0) {
-            const productItem = input.closest('.product-item');
-            const size = input.getAttribute('data-size');
-            const price = parseFloat(input.getAttribute('data-price')) || 0;
-            const itemTotal = price * quantity;
-            subtotal += itemTotal;
-            
-            formData.products.push({
-                product: input.getAttribute('data-product'),
-                size: size,
-                quantity: quantity,
-                price: price,
-                itemTotal: itemTotal
-            });
-            
-            console.log(`Added to order: ${quantity} x ${input.getAttribute('data-product')} (${size}) at ${price}`);
-        }
-    });
-    
-    // Calculate tax and total
-    const taxRate = 0.0975; // 9.75%
-    const tax = subtotal * taxRate;
-    const total = subtotal + tax;
-    
-    // Add calculated values to form data
-    formData.subtotal = subtotal;
-    formData.tax = tax;
-    formData.total = total;
-    
-    console.log(`Order subtotal: ${subtotal.toFixed(2)}, Tax: ${tax.toFixed(2)}, Total: ${total.toFixed(2)}`);
-    
-    // Disable submit button and show loading
-    const submitButton = document.getElementById('submit-button');
-    const originalButtonText = submitButton.innerHTML;
-    submitButton.disabled = true;
-    submitButton.innerHTML = '<div class="loader"></div> Processing...';
-    
-    console.log("Sending data to server:", formData);
-    
-    // Send data to Google Sheets
-    fetch(SCRIPT_URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        mode: 'no-cors', // Add this to help with CORS issues
-        body: JSON.stringify(formData)
-    })
-    .then(response => {
-        console.log("Received response from server");
-        // Since mode: 'no-cors' doesn't allow reading the response,
-        // we'll just assume success if we get this far
-        return { result: 'success' };
-    })
-    .then(data => {
-        console.log("Processing successful response");
-        // Show success message
-        const responseContainer = document.getElementById('response-container');
-        responseContainer.innerHTML = 'Your order has been submitted successfully! We will contact you when your supplements are ready for pickup.';
+        responseContainer.innerHTML = `${quantity} × ${product} ${type} (${size}) added to your order!`;
         responseContainer.className = 'success';
         responseContainer.style.display = 'block';
         
-        // Reset form
-        document.getElementById('protein-order-form').reset();
-        updateOrderSummary();
-        
-        // Reset button
-        submitButton.disabled = false;
-        submitButton.innerHTML = originalButtonText;
-        
-        // Scroll to response
-        responseContainer.scrollIntoView({ behavior: 'smooth' });
-    })
-    .catch(error => {
-        console.error("Error in form submission:", error);
-        // Show error message
-        const responseContainer = document.getElementById('response-container');
-        responseContainer.innerHTML = 'Error submitting form. Please try again later or contact Starting Strength Memphis directly.';
-        responseContainer.className = 'error';
-        responseContainer.style.display = 'block';
-        
-        // Reset button
-        submitButton.disabled = false;
-        submitButton.innerHTML = originalButtonText;
-    });
-});
+        // Hide feedback after 3 seconds
+        setTimeout(() => {
+            responseContainer.style.display = 'none';
+        }, 3000);
+    }
 
-// Initialize the form
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("Document loaded, initializing form");
-    updateOrderSummary();
-});
+    // Function to remove item from cart
+    function removeCartItem(itemId) {
+        const itemIndex = cart.findIndex(item => item.id === itemId);
+        if (itemIndex !== -1) {
+            const removedItem = cart[itemIndex];
+            console.log(`Removed from cart: ${removedItem.quantity} × ${removedItem.product} (${removedItem.size})`);
+            cart.splice(itemIndex, 1);
+            updateOrderSummary();
+        }
+    }
+
+    // Add event listeners to "Add to Order" buttons
+    document.querySelectorAll('.add-button').forEach(button => {
+        button.addEventListener('click', function() {
+            try {
+                // Get product info
+                const productItem = this.closest('.product-item');
+                const product = this.getAttribute('data-product');
+                const type = this.getAttribute('data-type');
+                const activeSize = productItem.querySelector('.size-option.active');
+                const size = activeSize.getAttribute('data-size');
+                const price = parseFloat(activeSize.getAttribute('data-price'));
+                const quantity = parseInt(productItem.querySelector('.quantity-input').value) || 1;
+                
+                // Add to cart
+                addToCart(product, type, size, price, quantity);
+            } catch (error) {
+                console.error("Error adding to cart:", error);
+            }
+        });
+    });
+
+    // Size selector functionality
+    document.querySelectorAll('.size-option').forEach(option => {
+        option.addEventListener('click', function() {
+            try {
+                console.log("Size option clicked:", this.textContent);
+                // Get parent product item
+                const productItem = this.closest('.product-item');
+                
+                // Remove active class from all size options in this product
+                productItem.querySelectorAll('.size-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                
+                // Add active class to clicked option
+                this.classList.add('active');
+                
+                // Update price display
+                const price = this.getAttribute('data-price');
+                const priceDisplay = productItem.querySelector('.price-value');
+                priceDisplay.textContent = price;
+                console.log(`Updated price display to: ${price}`);
+            } catch (error) {
+                console.error("Error in size option click handler:", error);
+            }
+        });
+    });
+
+    // Modal functionality
+    const modal = document.getElementById('nutrition-modal');
+    const modalImage = document.getElementById('nutrition-image');
+    const modalTitle = document.getElementById('modal-title');
+    const closeModal = document.querySelector('.close-modal');
+
+    // Open modal when clicking on "View Nutrition Facts"
+    document.querySelectorAll('.nutrition-link').forEach(link => {
+        link.addEventListener('click', function() {
+            try {
+                const nutritionImage = this.getAttribute('data-nutrition');
+                const productFlavor = this.parentElement.querySelector('.product-flavor').textContent;
+                console.log(`Opening nutrition modal for ${productFlavor}`);
+                modalImage.src = nutritionImage;
+                modalTitle.textContent = `${productFlavor} - Nutrition Facts`;
+                modal.style.display = 'block';
+            } catch (error) {
+                console.error("Error opening nutrition modal:", error);
+            }
+        });
+    });
+
+    // Close modal when clicking on X
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside the content
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Form submission handler
+    document.getElementById('protein-order-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        console.log("Form submission started");
+        
+        // Check if at least one product is selected
+        if (cart.length === 0) {
+            const responseContainer = document.getElementById('response-container');
+            responseContainer.innerHTML = 'Please add at least one product to your order.';
+            responseContainer.className = 'error';
+            responseContainer.style.display = 'block';
+            console.log("Form submission failed: No products selected");
+            return;
+        }
+        
+        // Collect form data
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value || 'Not provided',
+            notes: '',
+            products: []
+        };
+        
+        // Calculate values for submission
+        let subtotal = 0;
+        
+        // Add cart items to form data
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            subtotal += itemTotal;
+            
+            formData.products.push({
+                product: `${item.product} ${item.type}`,
+                size: item.size,
+                quantity: item.quantity,
+                price: item.price,
+                itemTotal: itemTotal
+            });
+        });
+        
+        // Calculate tax and total
+        const taxRate = 0.0975; // 9.75%
+        const tax = subtotal * taxRate;
+        const total = subtotal + tax;
+        
+        // Add calculated values to form data
+        formData.subtotal = subtotal;
+        formData.tax = tax;
+        formData.total = total;
+        
+        console.log(`Order subtotal: ${subtotal.toFixed(2)}, Tax: ${tax.toFixed(2)}, Total: ${total.toFixed(2)}`);
+        
+        // Disable submit button and show loading
+        const submitButton = document.getElementById('submit-button');
+        const originalButtonText = submitButton.innerHTML;
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<div class="loader"></div> Processing...';
+        
+        console.log("Sending data to server:", formData);
+        
+        // Send data to Google Sheets
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            mode: 'no-cors', // Add this to help with CORS issues
+            body: JSON.stringify(formData)
+        })
+        .then(response => {
+            console.log("Received response from server");
+            // Since mode: 'no-cors' doesn't allow reading the response,
+            // we'll just assume success if we get this far
+            return { result: 'success' };
+        })
+        .then(data => {
+            console.log("Processing successful response");
+            // Show success message
+            const responseContainer = document.getElementById('response-container');
+            responseContainer.innerHTML = 'Your order has been submitted successfully! We will contact you when your supplements are ready for pickup.';
+            responseContainer.className = 'success';
+            responseContainer.style.display = 'block';
+            
+            // Reset form and cart
+            document.getElementById('protein-order-form').reset();
+            cart = [];
+            updateOrderSummary();
+            
+            // Reset button
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+            
+            // Scroll to response
+            responseContainer.scrollIntoView({ behavior: 'smooth' });
+        })
+        .catch(error => {
+            console.error("Error in form submission:", error);
+            // Show error message
+            const responseContainer = document.getElementById('response-container');
+            responseContainer.innerHTML = 'Error submitting form. Please try again later or contact Starting Strength Memphis directly.';
+            responseContainer.className = 'error';
+            responseContainer.style.display = 'block';
+            
+            // Reset button
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+        });
+    });
+
+    // Initialize the form
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("Document loaded, initializing form");
+        updateOrderSummary();
+    });
     </script>
+</body>
+</html>
